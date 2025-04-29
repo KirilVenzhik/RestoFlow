@@ -8,6 +8,9 @@ obj/
 # VS Code project files
 .vscode/
 
+# Visual Studio system files
+.vs/
+
 # User-specific files
 *.suo
 *.user
