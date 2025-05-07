@@ -2,7 +2,6 @@
 using Domain.Entitites;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Persistence.Repositories;
 
@@ -19,7 +18,7 @@ public class OrderRepository : IOrderRepository
         return await _context.Orders
             .Include(o => o.Items)
             .AsNoTracking()
-            .FirstOrDefaultAsync();
+            .FirstOrDefaultAsync(o => o.Id == id);
     }
 
     public async Task<IEnumerable<Order>> GetAllByUserIdAsync(Guid userId)

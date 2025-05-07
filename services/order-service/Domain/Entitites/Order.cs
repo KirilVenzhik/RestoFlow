@@ -15,4 +15,15 @@ public class Order
     public DateTime UpdatedAt { get; set; }
 
     public List<OrderItem> Items { get; set; } = new();
+
+    public void ChangeStatus(OrderStatus newStatus)
+    {
+        Status = newStatus;
+        UpdatedAt = DateTime.UtcNow;
+    }
+
+    public void RecalculateTotal()
+    {
+        TotalPrice = Items.Sum(i => i.UnitPrice * i.Quantity);
+    }
 }
