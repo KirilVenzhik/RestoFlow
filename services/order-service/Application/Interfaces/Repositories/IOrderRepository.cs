@@ -9,5 +9,4 @@ public interface IOrderRepository
     Task AddAsync(Order order);
     void Update(Order order);
     void Delete(Order order);
-    Task SaveChangesAsync();
 }

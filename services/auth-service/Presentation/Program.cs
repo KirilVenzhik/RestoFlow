@@ -1,14 +1,10 @@
-using Application.Dependencies;
-using FluentValidation.AspNetCore;
 using Persistence.Dependencies;
-using Presentation.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
 builder.Services.AddPersistence(builder.Configuration);
-builder.Services.AddApplication();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -21,7 +17,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseGlobalExceptionHandling();
 
 app.UseHttpsRedirection();
 

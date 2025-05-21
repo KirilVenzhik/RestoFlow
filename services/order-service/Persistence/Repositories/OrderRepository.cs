@@ -7,11 +7,12 @@ namespace Persistence.Repositories;
 
 public class OrderRepository : IOrderRepository
 {
+    private readonly AppDbContext _context;
+
     public OrderRepository(AppDbContext context)
     {
         _context = context;
     }
-    private readonly AppDbContext _context;
 
     public async Task<Order?> GetByIdAsync(Guid id)
     {
@@ -32,7 +33,7 @@ public class OrderRepository : IOrderRepository
 
     public async Task AddAsync(Order order)
     {
-         await _context.Orders.AddAsync(order);
+        await _context.Orders.AddAsync(order);
     }
 
     public void Update(Order order)
@@ -43,10 +44,5 @@ public class OrderRepository : IOrderRepository
     public void Delete(Order order)
     {
         _context.Orders.Remove(order);
-    }
-
-    public async Task SaveChangesAsync()
-    {
-        await _context.SaveChangesAsync();
     }
 }
